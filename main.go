@@ -111,11 +111,13 @@ func Speak(say string) {
 	}
 }
 
+// WIP TODO
 func AskGPT(q string) (string, error) {
 	answer, _ := GPT4all()
 	return answer, nil
 }
 
+// WIP TODO
 func GPT4all() (string, error) {
 	//// Load the model
 	//model, err := gpt4all.New("~/.local/share/nomic.ai/GPT4All/ggml-gpt4all-j-v1.3-groovy.bin")

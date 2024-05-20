@@ -1,4 +1,4 @@
-#JetBrains IDE
+# JetBrains IDE
 .idea/
 
 #Local Log
@@ -9,3 +9,6 @@ assistant.log
 prompt.wav
 wake_detect.wav
 audio/
+
+# Python Virtual Environment - Makefile creates this
+.venv/
