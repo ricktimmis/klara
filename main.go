@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	htgotts "github.com/hegedustibor/htgo-tts"
 	"github.com/hegedustibor/htgo-tts/handlers"
@@ -24,51 +25,113 @@ var (
 	centralLayoutColumn int
 )*/
 
+//	func main() {
+//		widgets.NewQApplication(len(os.Args), os.Args)
+//		w := widgets.NewQWidget(nil, 0)
+//		wL := widgets.NewQVBoxLayout2(w)
+//		iw := widgets.NewQTextEdit(w)
+//		btn := widgets.NewQPushButton2("Speak", w)
+//		wL.AddWidget(iw, 0, 0)
+//		wL.AddWidget(btn, 0, 0)
+//		btn.ConnectClick(func() {
+//			go speak("Welcome")
+//		})
+//		w.Show()
+//		widgets.QApplication_Exec()
+//	}
 func main() {
-	widgets.NewQApplication(len(os.Args), os.Args)
-	w := widgets.NewQWidget(nil, 0)
-	wL := widgets.NewQVBoxLayout2(w)
-	//ic := widgets.NewQHBoxLayout()
-	iw := widgets.NewQTextEdit(w)
-	btn := widgets.NewQPushButton2("Speak", w)
-	wL.AddWidget(iw, 0, 0)
-	wL.AddWidget(btn, 0, 0)
-	btn.ConnectClick(Speak())
-	//wL.AddLayout(wL, 0)
-	/*for i := 0; i < 25; i++ {
-		l := widgets.NewQHBoxLayout()
-		for j := 0; j < 10; j++ {
-			l.AddWidget(widgets.NewQLabel2(fmt.Sprint(i, ":", j), w, 0), 0, 0)
+
+	// Command-line flag to accept a string
+	textFlag := flag.String("text", "", "Text to speak")
+	flag.Parse()
+
+	if *textFlag != "" {
+		// If the "text" flag is provided, speak the given text and exit
+		Speak(*textFlag)
+		return
+	}
+	// needs to be called once before you can start using the QWidgets
+	app := widgets.NewQApplication(len(os.Args), os.Args)
+
+	// create a window
+	// with a minimum size of 250*200
+	// and sets the title to "Hello Widgets Example"
+	window := widgets.NewQMainWindow(nil, 0)
+	window.SetMinimumSize2(250, 200)
+	window.SetWindowTitle("Hello Widgets Example")
+
+	// create a regular widget
+	// give it a QVBoxLayout
+	// and make it the central widget of the window
+	widget := widgets.NewQWidget(nil, 0)
+	widget.SetLayout(widgets.NewQVBoxLayout())
+	window.SetCentralWidget(widget)
+
+	// create a line edit
+	// with a custom placeholder text
+	// and add it to the central widgets layout
+	input := widgets.NewQLineEdit(nil)
+	input.SetPlaceholderText("Write something ...")
+	widget.Layout().AddWidget(input)
+
+	// create a button
+	// connect the clicked signal
+	// and add it to the central widgets layout
+	button := widgets.NewQPushButton2("and click me!", nil)
+	button.ConnectClicked(func(bool) {
+		//widgets.QMessageBox_Information(nil, "OK", input.Text(), widgets.QMessageBox__Ok, widgets.QMessageBox__Ok)
+		Answer, err := AskGPT(input.Text())
+		if err != nil {
+			fmt.Printf(err.Error())
 		}
-		wL.AddLayout(l, 0)
-	}*/
-	w.Show()
-	widgets.QApplication_Exec()
+		Speak(Answer)
+	})
+	widget.Layout().AddWidget(button)
+
+	// make the window visible
+	window.Show()
+
+	// start the main Qt event loop
+	// and block until app.Exit() is called
+	// or the window is closed by the user
+	Speak("Good evening! Olivia Seven here, how can I help you ?")
+	app.Exec()
 }
 
-/*func addWidget(widget widgets.QWidget_ITF) {
+func onButtonClick() {
+	fmt.Println("Button clicked - onButtonClick()")
+	Speak("Wrapper Function")
+}
 
-	if centralLayoutColumn > 6 {
-		centralLayoutColumn = 0
-		centralLayoutRow++
-	}
-
-	wrappedWidget := widgets.NewQGroupBox2(widget.QWidget_PTR().WindowTitle(), nil)
-	wrappedWidgetLayout := widgets.NewQVBoxLayout2(wrappedWidget)
-	wrappedWidgetLayout.AddWidget(widget, 0, core.Qt__AlignCenter)
-	wrappedWidget.SetFixedSize2(250, 250)
-
-	centralLayout.AddWidget2(wrappedWidget, centralLayoutRow, centralLayoutColumn, core.Qt__AlignCenter)
-
-	centralLayoutColumn++
-}*/
-
-func Speak() {
-
+func Speak(say string) {
+	fmt.Printf("Speaking,  %s\n", say)
 	speech := htgotts.Speech{Folder: "audio", Language: voices.English, Handler: &handlers.Native{}}
-	if err := speech.Speak("Hello"); err != nil {
-		fmt.Printf("ERROR: %s", err)
-		//return err
+	if err := speech.Speak(say); err != nil {
+		fmt.Printf("ERROR: %s\n", err)
 	}
-	//return nil
+}
+
+func AskGPT(q string) (string, error) {
+	answer, _ := GPT4all()
+	return answer, nil
+}
+
+func GPT4all() (string, error) {
+	//// Load the model
+	//model, err := gpt4all.New("~/.local/share/nomic.ai/GPT4All/ggml-gpt4all-j-v1.3-groovy.bin")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//defer model.Free()
+	//
+	//model.SetTokenCallback(func(s string) bool {
+	//	fmt.Print(s)
+	//	return true
+	//})
+	//
+	//answer, err := model.Predict("Here are 4 steps to create a website:", gpt4all.SetTemperature(0.1))
+	//if err != nil {
+	//	panic(err)
+	//}
+	return "Not Implemented", nil
 }
