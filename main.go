@@ -105,7 +105,7 @@ func onButtonClick() {
 
 func Speak(say string) {
 	fmt.Printf("Speaking,  %s\n", say)
-	speech := htgotts.Speech{Folder: "audio", Language: voices.English, Handler: &handlers.Native{}}
+	speech := htgotts.Speech{Folder: "audio", Language: voices.EnglishUK, Handler: &handlers.Native{}}
 	if err := speech.Speak(say); err != nil {
 		fmt.Printf("ERROR: %s\n", err)
 	}
