@@ -3,3 +3,9 @@
 
 #Local Log
 assistant.log
+
+# Local Audio Storage Files
+# These are produced by the listener
+prompt.wav
+wake_detect.wav
+audio/
