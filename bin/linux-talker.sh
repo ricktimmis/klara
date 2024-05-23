@@ -1,5 +1,5 @@
 #!/bin/bash
-# Kompanion Utility Script, for Text to speech
+# klara Utility Script, for Text to speech
 
 #function logger(){
 #LOG_FILE=./assistant.log
@@ -45,10 +45,10 @@ for i in "${array[@]}"
 #    fi
 #    i=$(echo "$i" | sed -e 's/<[^>]*>//g')
 
-    if command -v JustSpeak > /dev/null 2>&1; then
+    if command -v ./bin/GoSpeak > /dev/null 2>&1; then
 #         # Check if the current hour is between 08 and 22
 #         if (( 8 <= currentHour && currentHour < 22 )); then
-             `JustSpeak -text "$i"`  > /dev/null 2>&1
+             `./bin/GoSpeak "$i"`  > /dev/null 2>&1
 #         else
 #             echo "It's not between 08:00 and 22:00 - JustSpeak command was not executed"
 #         fi

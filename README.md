@@ -1,6 +1,14 @@
-# kompanion
+# K.L.A.R.A
 
-Kompanion is a desktop AI companion, designed to support you in research, learning and general work. Kompanion is 
+![Klara Hero Image](./images/klara_hero.png)
+
+ - **K**ubuntu
+ - **L**ocal
+ - **A**lgorythmic
+ - **R**ealtime
+ - **A**ssistant
+
+Klara is a desktop AI companion, designed to support you in research, learning and general work. klara is 
 designed to provide a voice powered _human-esque_ desktop assistant.
 
 try it:
@@ -10,27 +18,34 @@ try it:
 ## Dependencies
 
 ### Linux
-ALSA is required. See: 
-https://github.com/ebitengine/oto
 
 On Ubuntu or Debian, run this command:
 
-```apt install libasound2-dev portaudio19-dev ```
+```
+apt install libasound2-dev portaudio19-dev python3.10-venv
+```
+# Road Map
 
-## Shoulders
+ -[ ] Markdown Transcript Logger. _Creates nicely formatted human-readable transcripts_
+ -[ ] Clipboard integration. _Enables R/W from clipboard, handy for code snippets_
+ -[ ] KDE DBUS IPC Integration. _Step toward desktop integration_
+ -[ ] RAG Support for KDE Handbook, and Kubuntu Manual. _Provides Klara with KDE help reference context via Retrieval Augment Generation_
+ -[ ] Browser Integration. _Opening stuff on the web_
+ -[ ] Skills Plugin. _Enables Specific Skills to be developed, useful for creating Actions / Workflows_
+ -[ ] Personas. _Custom prompts, which cause Klara to behave in definable ways_
+
+# Contribute
+
+Licenses are GPLv3 or less restrictive, please do..
+
+# Shoulders
 _We stand upon the shoulders of Giants_
 
 ### GPT4ALL-Voice-Assistant
 https://github.com/Ai-Austin/GPT4ALL-Voice-Assistant
 
-This is a 100% offline GPT4ALL Voice Assistant. Completely open source and privacy-friendly. Use any language model on GPT4ALL. Background process voice detection. Watch the full YouTube tutorial for the setup guide: https://youtu.be/6zAk0KHmiGw
-## Setup
-I highly advise watching the YouTube tutorial to use this code. You will need to modify the OpenAI whisper library to work offline and I walk through that in the video as well as setting up all the other dependencies to function properly.
+### GPT4ALL
+https://github.com/nomic-ai/gpt4all
 
-If you're planning on installing it on Arch-based distros, you need to install `espeak` and `python-espeak` packages from the AUR. You can install them using `yay` utility by running:
-```bash
-yay -S espeak python-espeak
-```
-### Improvements to think about adding to yours
-Give a system prompt. These open-source models perform far better when you send a system prompt as specified in the GPT4ALL documentation: https://docs.gpt4all.io/gpt4all_python.html#introspection
-
+### HTGO-TTS
+https://github.com/hegedustibor/htgo-tts

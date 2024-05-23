@@ -5,14 +5,15 @@ REQUIREMENTS = requirements.txt
 VENV_NAME = .venv
 
 # Default python version can be overridden: make PYTHON=python3.6 ...
-PYTHON = python3.10
+PYTHON = python3
 
 all: build install run # package
 
 clean:
 	@echo "Cleaning up..."
-	# rm ./bin/GoSpeak
-	# rm -rf .venv/
+	@rm ./bin/GoSpeak
+	@rm -rf ./.venv/
+	@rm -rf ./bin/audio
 
 build:
 	@echo "Building GoSpeak..."
@@ -27,11 +28,11 @@ install: venv
 # By declaring it as a dependency for the ******** install-requirements ******** rule,
 # It will execute first when `make install-requirements` is run.
 venv:
-	test -d $(VENV_NAME) || $(PYTHON) -m venv $(VENV_NAME)
+	@test -d $(VENV_NAME) || $(PYTHON) -m venv $(VENV_NAME)
 
 # You can also add a rule to run your source code
 run: venv
-	. $(VENV_NAME)/bin/activate; python kompanion.py
+	. $(VENV_NAME)/bin/activate; python klara.py
 
 package:
 	@echo "Packaging..."

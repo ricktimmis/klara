@@ -70,3 +70,13 @@ Users can install your application using dpkg: sudo dpkg -i your-package.deb
 Please keep in mind this is a very simplified overview and there are many options you can use in the setup.py file to customize the building of your distribution package according to your needs. For a very detailed guide, you should really look into the official
 - 
 https://packaging.python.org/en/latest/tutorials/packaging-projects/
+
+## Road Map 
+
+ -[ ] Markdown Transcript Logger. _Creates nicely formatted human-readable transcripts_
+ -[ ] Clipboard integration. _Enables R/W from clipboard, handy for code snippets_
+ -[ ] KDE DBUS IPC Integration. _Step toward desktop integration_
+ -[ ] RAG Support for KDE Handbook, and Kubuntu Manual. _Provides Klara with KDE help reference context via Retrieval Augment Generation_
+ -[ ] Browser Integration. _Opening stuff on the web_
+ -[ ] Skills Plugin. _Enables Specific Skills to be developed, useful for creating Actions / Workflows_
+ -[ ] Personas. _Custom prompts, which cause Klara to behave in definable ways_
