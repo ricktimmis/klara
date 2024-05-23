@@ -1,0 +1,25 @@
+# OpenAI Speech Recognition
+# https://github.com/openai/whisper/tree/main
+openai-whisper
+# I think this one is the Apache Whisper, something totally different
+#whisper~=1.1.10
+
+#Library for performing speech recognition, with support for several engines and APIs, online and offline.
+#https://pypi.org/project/SpeechRecognition/
+SpeechRecognition
+
+gpt4all==2.2.1.post1
+
+# PyAudio provides API's for access to audio subsystems
+# https://pypi.org/project/PyAudio/
+pyaudio==0.2.13
+
+# Not Required, as using GoSpeak, plus it uses ESpeak which is terrible
+#pyttsx3==2.90
+
+# The soundfile module can read and write sound files.
+# https://pypi.org/project/soundfile/
+soundfile==0.12.1
+
+# Tokeniser to split LLM responses into sentences
+nltk
