@@ -4,7 +4,6 @@ go 1.19
 
 require (
 	github.com/hegedustibor/htgo-tts v0.0.0-20230402053941-cd8d1a158135
-	github.com/nomic-ai/gpt4all/gpt4all-bindings/golang v0.0.0-20230817205628-36f7fb584824
 	github.com/therecipe/qt v0.0.0-20200904063919-c0c124a5770d
 )
 

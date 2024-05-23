@@ -1,11 +1,20 @@
-#JetBrains IDE
+# JetBrains IDE
 .idea/
 
 #Local Log
-assistant.log
+klara.log
 
 # Local Audio Storage Files
 # These are produced by the listener
 prompt.wav
 wake_detect.wav
 audio/
+bin/audio/
+bin/GoSpeak
+
+# Local configuration files
+config.local
+.env
+
+# Python Virtual Environment - Makefile creates this
+.venv/
